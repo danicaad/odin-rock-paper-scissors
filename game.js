@@ -8,7 +8,7 @@ function playRound(playerSelection, computerSelection) {
     let player = playerSelection.toLowerCase();
     let result;
 
-    console.log("Your move: rock\nComputer's move: " + computerSelection);
+    console.log("Your move: " + player + "\nComputer's move: " + computerSelection);
 
     switch (player) {
         case "rock":
@@ -48,7 +48,7 @@ function playRound(playerSelection, computerSelection) {
             }
             return result;
         default:
-            result = "Invalid move!";
+            result = "invalid";
             return result;
     }
 }
@@ -56,12 +56,16 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;    
-    let playerSelection;
+    let playerSelection = "";
+
     for (let i = 0; i < 5; i++) {
-        playerSelection = prompt(`What's your move? (Game #${i+1} of 5)`);
-        console.log(playerSelection);
-        if (playerSelection === null) {
-            alert("Cancelled");
+            playerSelection = prompt(`What's your move? (Game #${i+1} of 5)`);
+        if (playerSelection === "") {
+            while (playerSelection === "") {
+                playerSelection = prompt(`What's your move? (Game #${i+1} of 5)`);
+            }
+        } else if (playerSelection === null) {
+            alert("Cancelled.");
             return;
         } else {
             const computerSelection = getComputerChoice();
@@ -70,14 +74,16 @@ function game() {
                 ++playerScore; 
             } else if (result === "lose") {
                 ++computerScore;
+            } else if (result === "invalid") {
+                alert("Invalid move!");
             }
         }
     }
 
     let finalMessage = (computerScore > playerScore) ? "You lose. Sorry!"
-                        : (computerScore < playerScore) ?   "You win! Congrats!"
+                        : (computerScore < playerScore) ? "You win! Congrats!"
                         : "It's a tie!";
-    alert(`Final Score: Your score is ${playerScore}. Computer's score is ${computerScore}. ${finalMessage}`);
+    alert(`Your score is ${playerScore}. Computer's score is ${computerScore}. ${finalMessage}`);
 }
 
 game();
