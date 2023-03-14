@@ -60,11 +60,12 @@ function game() {
 
     for (let i = 0; i < 5; i++) {
             playerSelection = prompt(`What's your move? (Game #${i+1} of 5)`);
-        if (playerSelection === "") {
-            while (playerSelection === "") {
-                playerSelection = prompt(`What's your move? (Game #${i+1} of 5)`);
-            }
-        } else if (playerSelection === null) {
+
+        while (playerSelection === "") {
+            playerSelection = prompt(`What's your move? (Game #${i+1} of 5)`);
+        } 
+       
+        if (playerSelection === null) {
             alert("Cancelled.");
             return;
         } else {
