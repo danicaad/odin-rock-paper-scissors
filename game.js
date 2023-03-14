@@ -24,17 +24,30 @@ function playRound(playerSelection, computerSelection) {
             return result;
         case "scissors":
             console.log("Your move: scissors\nComputer's move: " + computerSelection);
-            result = computerSelection === "rock" ? "Rock beats Scissors. You lose!"
+            result = computerSelection === "rock" ? "Rock beats scissors. You lose!"
                     : computerSelection === "paper" ? "Scissors beat paper. You win!"
                     : computerSelection === "scissors" ? "Both scissors. It's a tie!"
                     : "Impossible!";
             return result;
         default:
-            console.log("Invalid move!");
-            break;
+            result = "Invalid move!";
+            return result;
     }
 }
 
-const playerSelection = "SCISSORS";
-const computerSelection = getComputerChoice();
-playRound(playerSelection, computerSelection);
+function game() {
+    let playerSelection;
+    for (let i = 0; i < 5; i++) {
+        playerSelection = prompt(`What's your move? (Game #${i+1} of 5)`);
+        console.log(playerSelection);
+        if (playerSelection === null) {
+            alert("Cancelled");
+            return;
+        } else {
+            const computerSelection = getComputerChoice();
+            console.log(playRound(playerSelection, computerSelection));
+        }
+    }
+}
+
+game();
