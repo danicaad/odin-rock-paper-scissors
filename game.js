@@ -6,70 +6,49 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     let player = playerSelection.toLowerCase();
-    let result;
     const p = document.createElement('p');
+    const roundMessage = document.createElement('p');
+    
+    p.innerHTML = `Your move: ${player} <br>
+    Computer's move: ${computerSelection}`;
+    results.appendChild(p);
+
     switch (player) {
         case "rock":
             if (computerSelection === "rock") {
-                p.innerHTML = `Your move: ${player}
-                Computer's move: ${computerSelection} <br>
-                Both rocks. It's a tie.`;
-                results.appendChild(p);
+                roundMessage.textContent = "Both rocks. It's a tie.";
             } else if (computerSelection === "paper") {
-                p.innerHTML = `Your move: ${player}
-                Computer's move: ${computerSelection} <br>
-                Paper beats rock. You lose!`;
-                results.appendChild(p);
+                roundMessage.textContent = "Paper beats rock. You lose!";
                 ++computerScore;
             } else if (computerSelection === "scissors") {
-                p.innerHTML = `Your move: ${player}
-                Computer's move: ${computerSelection} <br>
-                Rock beats paper. You win!`;
-                results.appendChild(p);
+                roundMessage.textContent = "Rock beats paper. You win!";
                 ++playerScore;
             }
             break;
         case "paper":
             if (computerSelection === "rock") {
-                p.innerHTML = `Your move: ${player}
-                Computer's move: ${computerSelection} <br>
-                Paper beats rock. You win!`;
-                results.appendChild(p);
+                roundMessage.textContent = "Paper beats rock. You win!";
                 ++playerScore;
             } else if (computerSelection === "paper") {
-                p.innerHTML = `Your move: ${player}
-                Computer's move: ${computerSelection} <br>
-                Both paper. It's a tie.`;
-                results.appendChild(p);
+                roundMessage.textContent = "Both paper. It's a tie.";
             } else if (computerSelection === "scissors") {
-                p.innerHTML = `Your move: ${player}
-                Computer's move: ${computerSelection} <br>
-                Scissors beats paper. You lose!`;
-                results.appendChild(p);
+                roundMessage.textContent = "Rock beats paper. You lose!"
                 ++computerScore;
             }
             break;
         case "scissors":
             if (computerSelection === "rock") {
-                p.innerHTML = `Your move: ${player}
-                Computer's move: ${computerSelection} <br>
-                Rock beats scissors. You lose!`;
-                results.appendChild(p);
+                roundMessage.textContent = "Rock beats scissors. You lose!";
                 ++computerScore;
             } else if (computerSelection === "paper") {
-                p.innerHTML = `Your move: ${player}
-                Computer's move: ${computerSelection} <br>
-                Scissors beat paper. You win!`;
-                results.appendChild(p);
+                roundMessage.textContent = "Scissors beat paper. You win!";
                 ++playerScore;
             } else if (computerSelection === "scissors") {
-                p.innerHTML = `Your move: ${player}
-                Computer's move: ${computerSelection} <br>
-                Both scissors. It's a tie!`;
-                results.appendChild(p);
+                roundMessage.textContent = "Both scissors. It's a tie!";
             }
         break;
     }
+    results.appendChild(roundMessage);
 }
 
 let playerScore = 0;
