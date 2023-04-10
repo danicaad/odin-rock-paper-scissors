@@ -58,26 +58,6 @@ function game() {
     let computerScore = 0;    
     let playerSelection = "";
 
-    for (let i = 0; i < 5; i++) {
-        do {
-            playerSelection = prompt(`What's your move? (Game #${i+1} of 5)`);
-        } while (playerSelection === "")      
-        
-        if (playerSelection === null) {
-            alert("Cancelled.");
-            return;
-        } else {
-            const computerSelection = getComputerChoice();
-            const result = playRound(playerSelection, computerSelection);
-            if (result === "win") {
-                ++playerScore; 
-            } else if (result === "lose") {
-                ++computerScore;
-            } else if (result === "invalid") {
-                alert("Invalid move!");
-            }
-        }
-    }
 
     let finalMessage = (computerScore > playerScore) ? "You lose. Sorry!"
                         : (computerScore < playerScore) ? "You win! Congrats!"
