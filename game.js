@@ -65,4 +65,11 @@ function game() {
     alert(`Your score is ${playerScore}. Computer's score is ${computerScore}. ${finalMessage}`);
 }
 
-game();
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(button.id, getComputerChoice);
+    });
+});
+//game();
