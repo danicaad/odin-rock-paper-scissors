@@ -82,6 +82,7 @@ const newGame = document.createElement('button');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
+        results.textContent = "";
         const computerSelection = getComputerChoice();
         playRound(button.id, computerSelection);
         const score = document.createElement('p');
